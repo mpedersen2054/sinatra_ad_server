@@ -16,9 +16,7 @@
             %a.pull-left{:href => "/new"} New
             %a.pull-left{:href => "/demo"} Demo
       %br
-
         = yield
-
         #debug
           %p.text-danger The time is #{Time.now.strftime("%I:%M:%S %p")}.
           %p.text-danger Sinatra version #{Sinatra::VERSION}.

@@ -22,6 +22,21 @@ class Ad
   property :size, Integer
   property :content_type, String
 
+  # has many clicks
+  has n, :clicks
+
+end
+
+class Click
+
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :ip_address, String
+  property :created_at, DateTime
+
+  belongs_to :ad
+
 end
 
 # create or upgrade all tables at once
@@ -100,4 +115,7 @@ get '/show/:id' do
 end
 
 get '/click/:id' do
+  ad = Ad.get(params[:id])
+  ad.clicks.create(:ip_address => env["REMOTE_ADDR"])
+  redirect(ad.url)
 end

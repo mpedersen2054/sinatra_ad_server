@@ -3,7 +3,7 @@
   - @ads.each_with_index do |ad, i|
     %tr{:class => "#{'alt' if i%2==0}" }
       %td
-        %a.bg-danger{:href => "/show/#{ad.id}"}= ad.title
+        %a.bg-primary.text-large{:href => "/show/#{ad.id}"}= ad.title
       %td
         %a{:href => "/delete/#{ad.id}"} delete
       %br
