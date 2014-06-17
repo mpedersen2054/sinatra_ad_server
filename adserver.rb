@@ -41,7 +41,7 @@ get '/ad' do
 end
 
 get '/list' do
-  @title = "All Ads in created at descending order"
+  @title = "All Ads"
   @ads = Ad.all(:order => [:created_at.desc])
   haml :list
 end

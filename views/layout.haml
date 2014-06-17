@@ -3,25 +3,26 @@
   %head
     %meta{charset: "utf8"}/
     %title= @title + ' | AdServer'
-    %link{href: "/css/reset.css", rel: "stylesheet"}/
+    %link{href: "/css/bootstrap.css", rel: "stylesheet"}/
     %link{href: "/css/styles.css", rel: "stylesheet"}/
   %body
-    %header
-      %hgroup
-        %h1 #{@title}
-        %ul
-          %a{:href => "/list"} List
-          |
-          %a{:href => "/new"} New
-
     #main
-      = yield
+      %header
+        %hgroup
+          %h1.text-center #{@title}
+          %br
+          %ul.nav.nav-tabs
+            %a.pull-left{:href => "/list"} List
+            %a.pull-left{:href => "/new"} New
+      %br
 
-      #debug
-        %p The time is #{Time.now.strftime("%I:%M:%S %p")}.
-        %p Sinatra version #{Sinatra::VERSION}.
-    %footer
-      %p
-        %small
-          %br/
-          mattpedersen
+        = yield
+
+        #debug
+          %p.text-danger The time is #{Time.now.strftime("%I:%M:%S %p")}.
+          %p.text-danger Sinatra version #{Sinatra::VERSION}.
+      %footer
+        %p
+          %small
+            %hr/
+            mattpedersen

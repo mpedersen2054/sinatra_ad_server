@@ -1,5 +1,13 @@
-body { margin: 40px; font: 16px/18px helvetica; }
+/*GENERAL*/
+#main {
+  width: 800px;
+  margin: 0 auto;
+}
+
 #debug { font-size: 11px; color: #999; margin-top: 50px; }
-header { text-align: center; }
-#main { margin: 75px; }
-input { width: 500px; height: 30px; margin-bottom: 20px; }
+
+/*HEADER*/
+header ul a {
+  margin: 10px 30px;
+  font-size: 1.2em;
+}

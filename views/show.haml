@@ -1,23 +1,24 @@
-%p
-  %img{:src => "/ads/#{@ad.filename}", :height => "#{@ad.height}", :width => "#{@ad.width}"}/
-%p
-  %strong Title:
-  = @ad.title
-%p
-  %strong Content:
-  = @ad.content
-%p
-  %strong Width:
-  = @ad.width
-%p
-  %strong Height:
-  = @ad.height
-%p
-  %strong Filename:
-  = @ad.filename
-%p
-  %strong Destination url:
-  = @ad.url
-%p
-  %strong Is active:
-  = @ad.is_active
+.well
+  %p
+    %img{:src => "/ads/#{@ad.filename}", :height => "#{@ad.height}", :width => "#{@ad.width}"}/
+  %p
+    %strong.bg-danger Title:
+    = @ad.title
+  %p
+    %strong.bg-danger Content:
+    = @ad.content
+  %p
+    %strong.bg-danger Width:
+    = @ad.width
+  %p
+    %strong.bg-danger Height:
+    = @ad.height
+  %p
+    %strong.bg-danger Filename:
+    = @ad.filename
+  %p
+    %strong.bg-danger Destination url:
+    = @ad.url
+  %p
+    %strong.bg-danger Is active:
+    = @ad.is_active

@@ -1,7 +1,8 @@
-%table{:border => "0", :cellpadding => "0", :cellspacing => "10", :class => "list"}
-- @ads.each_with_index do |ad, i|
-  %tr{:class => "#{'alt' if i%2==0}" }
-    %td
-      %a{:href => "/show/#{ad.id}"}= ad.title
-    %td
-      %a{:href => "/delete/#{ad.id}"} delete
+.well
+  %table{:border => "0", :cellpadding => "0", :cellspacing => "10", :class => "list"}
+  - @ads.each_with_index do |ad, i|
+    %tr{:class => "#{'alt' if i%2==0}" }
+      %td
+        %a.bg-danger{:href => "/show/#{ad.id}"}= ad.title
+      %td
+        %a{:href => "/delete/#{ad.id}"} delete
