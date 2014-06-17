@@ -1,0 +1,23 @@
+%p
+  %img{:src => "/ads/#{@ad.filename}", :height => "#{@ad.height}", :width => "#{@ad.width}"}/
+%p
+  %strong Title:
+  = @ad.title
+%p
+  %strong Content:
+  = @ad.content
+%p
+  %strong Width:
+  = @ad.width
+%p
+  %strong Height:
+  = @ad.height
+%p
+  %strong Filename:
+  = @ad.filename
+%p
+  %strong Destination url:
+  = @ad.url
+%p
+  %strong Is active:
+  = @ad.is_active

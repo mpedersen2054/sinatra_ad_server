@@ -3,9 +3,17 @@
   %head
     %meta{charset: "utf8"}/
     %title= @title + ' | AdServer'
-    / %link{href: "/reset.css", rel: "stylesheet"}/
+    %link{href: "/css/reset.css", rel: "stylesheet"}/
     %link{href: "/css/styles.css", rel: "stylesheet"}/
   %body
+    %header
+      %hgroup
+        %h1 #{@title}
+        %ul
+          %a{:href => "/list"} List
+          |
+          %a{:href => "/new"} New
+
     #main
       = yield
 

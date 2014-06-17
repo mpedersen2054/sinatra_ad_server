@@ -1,0 +1,41 @@
+%form#ad{:action => "/create", :method => "POST", :enctype => "multipart/form-data"}
+
+  %p
+    %label{:for => "title"} Title:
+    %br/
+    %input{:type => "text", :name => "ad[title]", :id => "title"}/
+
+  %p
+    %label{:for => "width"} Width:
+    %br/
+    %input{:type => "text", :name => "ad[width]", :id => "width"}/
+
+  %p
+    %label{:for => "height"} Height:
+    %br/
+    %input{:type => "text", :name => "ad[height]", :id => "height"}/
+
+  %p
+    %label{:for => "filename"} Filename:
+    %br/
+    %input{:type => "text", :name => "ad[filename]", :id => "filename"}/
+
+  %p
+    %label{:for => "url"} URL:
+    %br/
+    %input{:type => "text", :name => "ad[url]", :id => "url"}/
+
+  %p
+    %label{:for => "content"} Content:
+    %br/
+    %textarea{:name => "ad[content]", :id => "content", :cols => "59"}
+
+  %br/
+  %p
+    %label{:for => "image"} Image:
+    %br/
+    %input{:type => "file", :name => "image", :id => "image"}/
+
+  %br/
+  %p
+    %input{:type => "submit", :value => "Create Ad"}/
