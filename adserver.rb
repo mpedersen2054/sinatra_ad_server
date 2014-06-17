@@ -37,7 +37,16 @@ get '/' do
   haml :welcome
 end
 
+get '/demo' do
+  erb :demo
+end
+
 get '/ad' do
+  id = repository(:default).adapter.select(
+    'SELECT id FROM ads ORDER BY random() LIMIT 1;'
+  )
+  @ad = Ad.get(id)
+  erb :ad, :layout => false
 end
 
 get '/list' do
