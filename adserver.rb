@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'data_mapper'
+require 'haml'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/adserver.db")
 
@@ -26,6 +27,33 @@ end
 # create or upgrade all tables at once
 DataMapper.auto_upgrade!
 
+# set utf-8 for outgoing
+before do
+  headers "Content-Type" => "text/html; charset=utf-8"
+end
+
 get '/' do
-  "HELLO WORLD!"
+  @title = "Welcome"
+  haml :welcome
+end
+
+get '/ad' do
+end
+
+get '/list' do
+end
+
+get '/new' do
+end
+
+post '/create' do
+end
+
+get '/delete/:id' do
+end
+
+get '/show/:id' do
+end
+
+get '/click/:id' do
 end
