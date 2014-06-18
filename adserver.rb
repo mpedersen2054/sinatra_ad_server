@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'data_mapper'
 require 'haml'
+require './lib/authorization'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/adserver.db")
 
@@ -42,6 +43,10 @@ end
 # create or upgrade all tables at once
 DataMapper.auto_upgrade!
 
+helpers do
+  include Sinatra::Authorization
+end
+
 # set utf-8 for outgoing
 before do
   headers "Content-Type" => "text/html; charset=utf-8"
@@ -65,17 +70,20 @@ get '/ad' do
 end
 
 get '/list' do
+  require_admin
   @title = "All Ads"
   @ads = Ad.all(:order => [:created_at.desc])
   haml :list
 end
 
 get '/new' do
+  require_admin
   @title = "Create a New Ad"
   haml :new
 end
 
 post '/create' do
+  require_admin
   @ad = Ad.new(params[:ad])
   @ad.content_type = params[:image][:type]
   @ad.size = File.size(params[:image][:tempfile])
@@ -93,6 +101,7 @@ post '/create' do
 end
 
 get '/delete/:id' do
+  require_admin
   ad = Ad.get(params[:id])
   unless ad.nil?
     path = File.join(Dir.pwd, "/public/ads", ad.filename)
@@ -103,6 +112,7 @@ get '/delete/:id' do
 end
 
 get '/show/:id' do
+  require_admin
   @ad = Ad.get(params[:id])
   @title = "#{@ad.title}"
 

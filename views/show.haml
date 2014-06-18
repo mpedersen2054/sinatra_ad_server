@@ -2,6 +2,9 @@
   %p
     %img{:src => "/ads/#{@ad.filename}", :height => "#{@ad.height}", :width => "#{@ad.width}"}/
   %p
+    %strong.bg-danger Clicks:
+    = @ad.clicks.size
+  %p
     %strong.bg-danger Title:
     = @ad.title
   %p

@@ -11,17 +11,17 @@
         %hgroup
           %h1.text-center #{@title}
           %br
-          %ul.nav.nav-tabs
-            %a.pull-left{:href => "/list"} List
-            %a.pull-left{:href => "/new"} New
-            %a.pull-left{:href => "/demo"} Demo
+          - if authorized?
+            %ul.nav.nav-tabs
+              %a.pull-left{:href => "/list"} List
+              %a.pull-left{:href => "/new"} New
+              %a.pull-left{:href => "/demo"} Demo
+              %a.pull-right{:href => "/signout"} Signout
       %br
         = yield
-        #debug
-          %p.text-danger The time is #{Time.now.strftime("%I:%M:%S %p")}.
-          %p.text-danger Sinatra version #{Sinatra::VERSION}.
       %footer
-        %p
-          %small
-            %hr/
-            mattpedersen
+        %small
+          %hr/
+          #debug.text-center
+            %p.text-danger The time is #{Time.now.strftime("%I:%M:%S %p")}.
+            %p.text-danger Sinatra version #{Sinatra::VERSION}.

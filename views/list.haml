@@ -1,9 +1,16 @@
-.well
-  %table{:border => "0", :cellpadding => "0", :cellspacing => "10", :class => "list"}
+%table.table.table-striped{:border => "0", :cellpadding => "0", :cellspacing => "10"}
+  %thead
+    %tr
+      %th title
+      %th clicks
+      %th
   - @ads.each_with_index do |ad, i|
-    %tr{:class => "#{'alt' if i%2==0}" }
-      %td
-        %a.bg-primary.text-large{:href => "/show/#{ad.id}"}= ad.title
-      %td
-        %a{:href => "/delete/#{ad.id}"} delete
-      %br
+    %tbody
+      %tr
+        %td
+          %a.text-large{:href => "/show/#{ad.id}"}= ad.title
+        %td
+          %a.bg-primary (#{ad.clicks.size})
+        %td
+          %a{:href => "/delete/#{ad.id}"} delete
+        %br
