@@ -62,6 +62,7 @@ GEM
     json (1.8.1)
     json_pure (1.8.1)
     multi_json (1.10.1)
+    pg (0.17.1)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -84,4 +85,5 @@ DEPENDENCIES
   dm-sqlite-adapter
   foreman (= 0.27.0)
   haml
+  pg
   sinatra
