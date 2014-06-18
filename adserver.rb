@@ -64,7 +64,7 @@ before do
 end
 
 get '/' do
-  @title = "Welcome to Matt's Ad Server"
+  @title = "Matt's Ad Server"
   haml :welcome
 end
 
