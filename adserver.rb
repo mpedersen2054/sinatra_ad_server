@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'data_mapper'
+require 'dm-core'
 require 'haml'
 require './lib/authorization'
 
