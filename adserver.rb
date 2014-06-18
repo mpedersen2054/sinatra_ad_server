@@ -26,6 +26,15 @@ class Ad
   # has many clicks
   has n, :clicks
 
+  def handle_upload(file)
+    self.content_type = file[:type]
+    self.size = File.size(file[:tempfile])
+    path = File.join(Dir.pwd, "public/ads", self.filename)
+    File.open(path, "wb") do |f|
+      f.write(file[:tempfile].read)
+    end
+  end
+
 end
 
 class Click
@@ -41,7 +50,9 @@ class Click
 end
 
 # create or upgrade all tables at once
-DataMapper.auto_upgrade!
+configure :development do
+  DataMapper.auto_upgrade!
+end
 
 helpers do
   include Sinatra::Authorization
@@ -85,17 +96,11 @@ end
 post '/create' do
   require_admin
   @ad = Ad.new(params[:ad])
-  @ad.content_type = params[:image][:type]
-  @ad.size = File.size(params[:image][:tempfile])
-
+  @ad.handle_upload(params[:image])
   if @ad.save
-    path = File.join(Dir.pwd, "public/ads", @ad.filename)
-    File.open(path, "wb") do |f|
-      f.write(params[:image][:tempfile].read)
-    end
-    redirect "/show/#{@ad.id}"
+    redirect("/show/#{@ad.id}")
   else
-    redirect('/list')
+
   end
 
 end
